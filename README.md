@@ -1,5 +1,3 @@
-Viewed start-03-unit-control-panel.html:1-532
-
 針對 **`start-03-unit-control-panel` (UI 佈局：HTML 按鈕與 CSS 控制面板)** 單元，這是學員將所有前端知識轉化為「可操作產品」的關鍵里程碑。它要求學員具備 **介面架構 (UI Architecture)** 與 **人因設計 (Ergonomic Design)** 的意識，學習如何利用 CSS Grid 構建穩定的控制網格，透過偽類實作物理級的按壓回饋，並最終完成一個具備沉浸感的 FPV 疊加面板。
 
 以下是在 **GitHub Classroom** 部署其作業 (Assignments) 的具體建議：
