@@ -120,11 +120,20 @@ body {
 
 .control-grid {
     display: grid;
-    /* TODO: Implement 3x3 Grid here */
+    grid-template-areas: 
+        ". up ."
+        "left stop right"
+        ". down .";
     grid-template-columns: repeat(3, 60px);
     grid-template-rows: repeat(3, 60px);
     gap: 12px;
 }
+
+#btn-up { grid-area: up; }
+#btn-down { grid-area: down; }
+#btn-left { grid-area: left; }
+#btn-right { grid-area: right; }
+#btn-stop { grid-area: stop; }
 
 .ctrl-btn {
     width: 100%;
