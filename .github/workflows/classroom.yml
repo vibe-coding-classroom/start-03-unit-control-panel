@@ -1,0 +1,76 @@
+name: Autograding Tests
+'on':
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check Files
+        id: check-files
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Required Files Check
+          setup-command: ''
+          command: bash .github/scripts/check_assignment.sh files
+          timeout: 10
+          max-score: 10
+
+      - name: Check Grid Layout
+        id: check-grid
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: CSS Grid Implementation
+          setup-command: ''
+          command: bash .github/scripts/check_assignment.sh grid
+          timeout: 10
+          max-score: 30
+
+      - name: Check Touch Feedback
+        id: check-feedback
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Interactive Feedback
+          setup-command: ''
+          command: bash .github/scripts/check_assignment.sh feedback
+          timeout: 10
+          max-score: 30
+
+      - name: Check HUD Overlay
+        id: check-hud
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: FPV HUD Layout
+          setup-command: ''
+          command: bash .github/scripts/check_assignment.sh hud
+          timeout: 10
+          max-score: 20
+
+      - name: Check Student Report
+        id: check-report
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Analysis Report
+          setup-command: ''
+          command: bash .github/scripts/check_assignment.sh report
+          timeout: 10
+          max-score: 10
+
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          CHECK-FILES_RESULTS: "${{steps.check-files.outputs.result}}"
+          CHECK-GRID_RESULTS: "${{steps.check-grid.outputs.result}}"
+          CHECK-FEEDBACK_RESULTS: "${{steps.check-feedback.outputs.result}}"
+          CHECK-HUD_RESULTS: "${{steps.check-hud.outputs.result}}"
+          CHECK-REPORT_RESULTS: "${{steps.check-report.outputs.result}}"
+        with:
+          runners: check-files,check-grid,check-feedback,check-hud,check-report

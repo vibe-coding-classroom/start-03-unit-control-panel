@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FPV Control Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="hud-container">
+        <!-- FPV Video Stream Background -->
+        <div id="video-stream" class="video-overlay">
+            <div class="status-bar">
+                <div class="signal-strength">SIGNAL: 98%</div>
+                <div class="battery">BATT: 14.8V</div>
+                <div class="latency">LATENCY: 24ms</div>
+            </div>
+            <div class="crosshair"></div>
+        </div>
+
+        <!-- Control Panel Overlay -->
+        <div id="control-panel" class="glass-panel">
+            <div class="control-grid">
+                <!-- Row 1 -->
+                <div class="grid-item empty"></div>
+                <button id="btn-up" class="ctrl-btn" aria-label="Move Up">
+                    <img src="assets/icons/up.svg" alt="Up">
+                </button>
+                <div class="grid-item empty"></div>
+
+                <!-- Row 2 -->
+                <button id="btn-left" class="ctrl-btn" aria-label="Move Left">
+                    <img src="assets/icons/left.svg" alt="Left">
+                </button>
+                <button id="btn-stop" class="ctrl-btn stop-btn" aria-label="Stop">
+                    <img src="assets/icons/stop.svg" alt="Stop">
+                </button>
+                <button id="btn-right" class="ctrl-btn" aria-label="Move Right">
+                    <img src="assets/icons/right.svg" alt="Right">
+                </button>
+
+                <!-- Row 3 -->
+                <div class="grid-item empty"></div>
+                <button id="btn-down" class="ctrl-btn" aria-label="Move Down">
+                    <img src="assets/icons/down.svg" alt="Down">
+                </button>
+                <div class="grid-item empty"></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
